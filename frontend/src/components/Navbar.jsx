@@ -6,14 +6,14 @@ import { ShopContext } from '../context/ShopContext';
 const Navbar = () => {
 
   const [visible, setVisible] = useState(false);
-  const {setShowSearch, getCartCount, navigate, token, setToken, setCartItems} = useContext(ShopContext);
+  const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
 
-  const logout =()=>{
+  const logout = () => {
     navigate('/login')
     localStorage.removeItem('token')
     setToken('')
     setCartItems({})
-    
+
   }
 
   return (
@@ -44,20 +44,20 @@ const Navbar = () => {
 
 
       <div className='flex items-center gap-6' >
-        <img onClick={()=>{setShowSearch(true); navigate('/collection')}} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+        <img onClick={() => { setShowSearch(true); navigate('/collection') }} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
         <div className='group relative'>
-          <img onClick={() => token ? null: navigate('/login')} className='w-5 cursor-pointer' src={assets.profile_icon} alt="" />
+          <img onClick={() => token ? null : navigate('/login')} className='w-5 cursor-pointer hidden md:block ' src={assets.profile_icon} alt="" />
           {/* Dropdown menu */}
-          {token && 
-          <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
-            <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-700 rounded-2xl'>
-              <p className='cursor-pointer hover:text-black'>My Profile</p>
-              <p onClick={()=> navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
-              <p onClick={logout} className='cursor-pointer hover:text-black'>Logout</p>
+          {token &&
+            <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
+              <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-700 rounded-2xl'>
+                <p className='cursor-pointer hover:text-black'>My Profile</p>
+                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
+                <p onClick={logout} className='cursor-pointer hover:text-black'>Logout</p>
 
-            </div>
+              </div>
 
-          </div>}
+            </div>}
         </div>
         <Link to='/cart' className='relative'>
           <img src={assets.cart_icon} className='w-5 min-w-5' alt="" />
@@ -77,6 +77,11 @@ const Navbar = () => {
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
+          <NavLink onClick={logout} className='py-2 pl-6 border' to='/login'>LOGOUT</NavLink>
+          <NavLink onClick={() => navigate('/orders')} className='py-2 pl-6 border' to='/orders'>ORDERS</NavLink>
+          
+          
+
         </div>
 
       </div>
