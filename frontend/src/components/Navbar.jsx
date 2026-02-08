@@ -45,8 +45,8 @@ const Navbar = () => {
 
       <div className='flex items-center gap-6' >
         <img onClick={() => { setShowSearch(true); navigate('/collection') }} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
-        <div className='group relative'>
-          <img onClick={() => token ? null : navigate('/login')} className='w-5 cursor-pointer hidden md:block ' src={assets.profile_icon} alt="" />
+        <div className='group relative hidden md:block'>
+          <img onClick={() => token ? null : navigate('/login')} className='w-5 cursor-pointer  ' src={assets.profile_icon} alt="" />
           {/* Dropdown menu */}
           {token &&
             <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
@@ -77,8 +77,8 @@ const Navbar = () => {
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
-          <NavLink onClick={logout} className='py-2 pl-6 border' to='/login'>LOGOUT</NavLink>
-          <NavLink className="py-2 pl-6 border" to="/orders">ORDERS</NavLink>
+          <NavLink onClick={() => { logout(); setVisible(false); }} className='py-2 pl-6 border' to='/login'>LOGOUT</NavLink>
+          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/orders">ORDERS</NavLink>
 
 
 
