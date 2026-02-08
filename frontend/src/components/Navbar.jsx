@@ -78,9 +78,10 @@ const Navbar = () => {
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
           <NavLink onClick={logout} className='py-2 pl-6 border' to='/login'>LOGOUT</NavLink>
-          <NavLink onClick={() => navigate('/orders')} className='py-2 pl-6 border' to='/orders'>ORDERS</NavLink>
-          
-          
+          <NavLink className="py-2 pl-6 border" to="/orders">ORDERS</NavLink>
+
+
+
 
         </div>
 
